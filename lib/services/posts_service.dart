@@ -57,16 +57,6 @@ class PostsService {
 
   }
 
-  Future deletePost(PostsModel post) async {
-    await FirebaseFirestore.instance.collection("posts").doc(post.id).delete();
-  }
-
-  Future editPost(PostsModel post,String text) async {
-    Map<String, Object> data = HashMap();
-    if(text != '') data['text'] = text;
-    await FirebaseFirestore.instance.collection('posts').doc(post.id).update(data);
-  }
-
   Future likePost(PostsModel post, bool current) async {
     if (current) {
       await FirebaseFirestore.instance
